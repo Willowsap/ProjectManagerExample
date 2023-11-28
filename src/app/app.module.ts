@@ -12,6 +12,10 @@ import { DisplayProjectComponent } from './projects/display-project/display-proj
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppMaterialModule } from './app-material.module';
+import { ProjectStepComponent } from './projects/project-step/project-step.component';
+import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { AppMaterialModule } from './app-material.module';
     CreateProjectComponent,
     EditProjectComponent,
     DisplayProjectComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProjectStepComponent,
+    SignUpComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     AppMaterialModule,
   ],

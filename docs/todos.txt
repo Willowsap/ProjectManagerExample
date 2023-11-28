@@ -1,0 +1,2 @@
+encrypt passwords
+ensure only one user with a given email

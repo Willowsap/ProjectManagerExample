@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
   menu = [
     {path: '', name: 'Home'},
     {path: 'project-create', name: 'New Project'},
+    {path: 'login', name: 'Log In'},
+    {path: 'sign-up', name: 'Sign Up'}
   ]
-
 }
