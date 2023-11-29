@@ -1,4 +1,15 @@
 <article>
-  <h1>Create a Project Here!</h1>  
+  <form #createProjectForm="ngForm"
+    (ngSubmit)="createProject(createProjectForm)">
+    <mat-form-field>
+      <label for="name">Project Name</label>
+      <input type="text" id="name" name="name" ngModel matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <label for="description">Project Description</label>
+      <input type="text" id="description" name="description" ngModel matInput>
+    </mat-form-field>
+    <button type="submit">Create Project</button>
+  </form>
 </article>
 

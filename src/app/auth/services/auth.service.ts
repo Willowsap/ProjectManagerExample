@@ -5,6 +5,9 @@ import { User } from "../models/user.model";
     providedIn: 'root'
 })
 export class AuthService {
+    isLoggedIn: boolean = false;
+    currentUser: User | null = null;
+
     createUser(user: User) {
         let users: Array<User> = [];
         const userString = localStorage.getItem("users");
@@ -18,8 +21,31 @@ export class AuthService {
     login(
         {email, password}:
         {email: string, password: string
-    }) {
-        const user = this.findUser({email});
+    }): User | null {
+        const user: User | null = this.findUser({email});
+        if (user) {
+            if (user.password === password) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.isLoggedIn = true;
+                this.currentUser = user;
+                return user;
+            }
+        }
+        return null;
+    }
+
+    logout() {
+        this.currentUser = null;
+        this.isLoggedIn = false;
+        localStorage.removeItem("currentUser");
+    }
+
+    autoLogIn() {
+        const userString = localStorage.getItem("currentUser");
+        if (userString) {
+            this.currentUser = JSON.parse(userString);
+            this.isLoggedIn = true;
+        }
     }
 
     private findUser({email}: {email: string}): User | null {

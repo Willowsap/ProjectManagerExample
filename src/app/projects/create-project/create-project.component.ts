@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-project',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-project.component.css']
 })
 export class CreateProjectComponent {
-
+  createProject(form: NgForm) {
+    
+  }
 }

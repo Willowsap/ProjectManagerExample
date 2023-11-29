@@ -1,12 +1,24 @@
 <mat-toolbar id="appHeader">
     <ul class="headerList">
-        <li *ngFor="let link of menu" class="headerListItem">
-            <a  [routerLink]="link.path"
+        <ng-container *ngFor="let link of menu" >
+            <li *ngIf="authService.isLoggedIn && link.loggedIn
+                || !authService.isLoggedIn && link.loggedOut"
+                class="headerListItem">
+                <a  [routerLink]="link.path"
+                    class="headerLink"
+                    mat-button
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    {{link.name}}
+                </a>
+            </li>
+        </ng-container>
+        <li class="headerListItem">
+            <a  *ngIf="authService.isLoggedIn"
+                (click)="logout()"
                 class="headerLink"
-                mat-button
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
-                {{link.name}}
+                mat-button>
+                Log Out
             </a>
         </li>
     </ul>
